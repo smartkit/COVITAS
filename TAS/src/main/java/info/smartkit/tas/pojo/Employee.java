@@ -1,4 +1,4 @@
-package info.smartkit.pojo;
+package info.smartkit.tas.pojo;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

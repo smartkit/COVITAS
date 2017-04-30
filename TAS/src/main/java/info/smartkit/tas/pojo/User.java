@@ -1,4 +1,4 @@
-package info.smartkit.pojo;
+package info.smartkit.tas.pojo;
 
 /**
  * Created by smartkit on 28/04/2017.

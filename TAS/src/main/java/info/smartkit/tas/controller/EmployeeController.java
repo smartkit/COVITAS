@@ -1,16 +1,18 @@
-package info.smartkit.controller;
+package info.smartkit.tas.controller;
 
-import info.smartkit.pojo.Employee;
-import info.smartkit.repository.EmployeeRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import info.smartkit.tas.pojo.Employee;
+import info.smartkit.tas.pojo.PFMessage;
+import info.smartkit.tas.repository.EmployeeRepository;
+import info.smartkit.tas.service.ITASServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by smartkit on 28/04/2017.
  */
+@RestController
+@RequestMapping("/employee")
 public class EmployeeController {
 
     @Autowired

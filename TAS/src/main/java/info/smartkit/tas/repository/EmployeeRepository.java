@@ -1,6 +1,6 @@
-package info.smartkit.repository;
+package info.smartkit.tas.repository;
 
-import info.smartkit.pojo.Employee;
+import info.smartkit.tas.pojo.Employee;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**

@@ -1,4 +1,4 @@
-package info.smartkit.pojo;
+package info.smartkit.tas.pojo;
 
 /**
  * Created by smartkit on 28/04/2017.
@@ -9,6 +9,9 @@ public class PFMessage {
 
     private Message message;
     private User user;
+
+    public PFMessage() {
+    }
 
     public PFMessage(Message message, User user) {
         this.message = message;
