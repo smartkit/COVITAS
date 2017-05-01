@@ -6,11 +6,13 @@ package info.smartkit.tas.pojo;
  */
 public class Message {
     private String message;
-    private int chatbotID;
+    private int chatBotID;
+    private int timestamp;
 
-    public Message(String message, int chatbotID, int timestamp) {
+    public Message(String message, int chatBotID, int timestamp) {
         this.message = message;
-        this.chatbotID = chatbotID;
+        this.chatBotID = chatBotID;
+        this.timestamp = timestamp;
     }
 
     public Message() {
@@ -20,7 +22,8 @@ public class Message {
     public String toString() {
         return "Message{" +
                 "message='" + message + '\'' +
-                ", chatbotID=" + chatbotID +
+                ", chatBotID=" + chatBotID +
+                ", timestamp=" + timestamp +
                 '}';
     }
 
@@ -32,12 +35,19 @@ public class Message {
         this.message = message;
     }
 
-    public int getChatbotID() {
-        return chatbotID;
+    public int getChatBotID() {
+        return chatBotID;
     }
 
-    public void setChatbotID(int chatbotID) {
-        this.chatbotID = chatbotID;
+    public void setChatBotID(int chatbotID) {
+        this.chatBotID = chatbotID;
     }
 
+    public int getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(int timestamp) {
+        this.timestamp = timestamp;
+    }
 }

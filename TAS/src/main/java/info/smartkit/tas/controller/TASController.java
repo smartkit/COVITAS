@@ -26,12 +26,14 @@ public class TASController {
     @Autowired
     private ITASServices tasService;
 
-    @RequestMapping(method = RequestMethod.GET, value="pf/{chatbotID}/{message}")
-    public Object simplePFMessage(@PathVariable int chatbotID,@PathVariable String message) throws JsonProcessingException {
-        LOG.info("simplePFMessage called.");
+    @RequestMapping(method = RequestMethod.GET, value="pf/{chatBotID}/{message}")
+    public Object simplePFMessage(@PathVariable int chatBotID,@PathVariable String message) throws JsonProcessingException {
+        int timeStampInt = (int) (System.currentTimeMillis() / 1000L);
+        LOG.info("simplePFMessage called at:"+timeStampInt);
         PFMessage pfMessage = new PFMessage();
         Message messageObj = new Message();
-        messageObj.setChatbotID(chatbotID);
+        messageObj.setChatBotID(chatBotID);
+        messageObj.setTimestamp(timeStampInt);
         messageObj.setMessage(message);
         //default User
         User userObj = new User();
@@ -45,7 +47,7 @@ public class TASController {
     }
 
     @RequestMapping(method = RequestMethod.POST,value = "/pf")
-    public Object pfMessage(@RequestBody PFMessage pfMessage) throws JsonProcessingException {
+    public Object securePfMessage(@RequestBody PFMessage pfMessage) throws JsonProcessingException {
         return tasService.personalityForge(pfMessage);
     }
 

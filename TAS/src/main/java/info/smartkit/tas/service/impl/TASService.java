@@ -62,30 +62,28 @@ public class TASService implements ITASServices {
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         String jsonMessage = ow.writeValueAsString(message);
-
+        LOG.info("rawJsonMessage:"+jsonMessage);
         //HmacUtils impl,https://www.personalityforge.com/chatbot-api-php.php
         String hashedJsonMessage = HmacUtils.hmacSha1Hex(API_SECRET,jsonMessage);
         LOG.info("hashedJsonMessage:"+hashedJsonMessage);
-        //Simple API call
-//        https://www.personalityforge.com/api/chat/?apiKey=sampleElyggY577I&chatBotID=6
-// &message=How+are+you+doing+today%3F&externalID=abc-639184572&firstName=Tugger&lastName=Sufani&gender=m
-        //
-//        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(API_URL)
-//                .queryParam("apiKey", API_KEY)
-//                .queryParam("hash", API_SECRET)
-//                .queryParam("message", hashedJsonMessage);
-
+        // Secure API call
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(API_URL)
                 .queryParam("apiKey", API_KEY)
-                .queryParam("chatBotID", message.getMessage().getChatbotID())
-                .queryParam("message", message.getMessage().getMessage())
-                .queryParam("externalID", message.getUser().getExternalID())
-                .queryParam("firstName", message.getUser().getFirstName())
-                .queryParam("lastName", message.getUser().getLastName())
-                .queryParam("gender", message.getUser().getGender());
-
+                .queryParam("hash", hashedJsonMessage)
+                .queryParam("message", jsonMessage);
+//Simple API call
+//        https://www.personalityforge.com/api/chat/?apiKey=sampleElyggY577I&chatBotID=6
+// &message=How+are+you+doing+today%3F&externalID=abc-639184572&firstName=Tugger&lastName=Sufani&gender=m
+//        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(API_URL)
+//                .queryParam("apiKey", API_KEY)
+//                .queryParam("chatBotID", message.getMessage().getChatbotID())
+//                .queryParam("message", message.getMessage().getMessage())
+//                .queryParam("externalID", message.getUser().getExternalID())
+//                .queryParam("firstName", message.getUser().getFirstName())
+//                .queryParam("lastName", message.getUser().getLastName())
+//                .queryParam("gender", message.getUser().getGender());
+//
         HttpEntity<?> entity = new HttpEntity<>(headers);
-
         HttpEntity<String> response = restTemplate.exchange(
                 builder.build().encode().toUri(),
                 HttpMethod.GET,
