@@ -3,21 +3,21 @@ package info.smartkit.tas.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import info.smartkit.tas.pojo.MessageResponse;
 import info.smartkit.tas.pojo.PFMessage;
+import info.smartkit.tas.pojo.PFMessageResponse;
 import info.smartkit.tas.service.ITASServices;
 import org.apache.commons.codec.digest.HmacUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.net.ssl.SSLContext;
+import java.io.IOException;
 import java.security.cert.X509Certificate;
 
 /**
@@ -35,7 +35,7 @@ public class TASService implements ITASServices {
     final private String API_SECRET = "yXNCf1LNd8P7cy6K2AEYXsUdU6b5L46N";
 
     @Override
-    public Object personalityForge(PFMessage message) throws JsonProcessingException {
+    public MessageResponse personalityForge(PFMessage message) throws IOException {
 //@see:http://blog.codeleak.pl/2016/02/skip-ssl-certificate-verification-in.html
 //        TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
 //
@@ -84,13 +84,18 @@ public class TASService implements ITASServices {
 //                .queryParam("gender", message.getUser().getGender());
 //
         HttpEntity<?> entity = new HttpEntity<>(headers);
-        HttpEntity<String> response = restTemplate.exchange(
+        //
+        ResponseEntity<String> response = restTemplate.exchange(
                 builder.build().encode().toUri(),
                 HttpMethod.GET,
                 entity,
                 String.class);
 
-       LOG.info("personalityForge Response:"+response);
-        return response;
+       LOG.info("personalityForge Response body String:"+response.getBody());
+       //
+        ObjectMapper objectMapper = new ObjectMapper();
+        PFMessageResponse pfMessageResponse = objectMapper.readValue(response.getBody().toString(),PFMessageResponse.class);
+        LOG.info("PFMessageResponse.message:"+pfMessageResponse.getMessage());
+        return pfMessageResponse.getMessage();
     }
 }

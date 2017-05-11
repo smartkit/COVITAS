@@ -1,9 +1,7 @@
 package info.smartkit.tas.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import info.smartkit.tas.pojo.Message;
-import info.smartkit.tas.pojo.PFMessage;
-import info.smartkit.tas.pojo.User;
+import info.smartkit.tas.pojo.*;
 import info.smartkit.tas.service.ITASServices;
 import info.smartkit.tas.service.impl.TASService;
 import org.slf4j.Logger;
@@ -11,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Date;
 
 
@@ -27,7 +26,7 @@ public class TASController {
     private ITASServices tasService;
 
     @RequestMapping(method = RequestMethod.GET, value="pf/{chatBotID}/{message}")
-    public Object simplePFMessage(@PathVariable int chatBotID,@PathVariable String message) throws JsonProcessingException {
+    public MessageResponse simplePFMessage(@PathVariable int chatBotID, @PathVariable String message) throws JsonProcessingException,IOException {
         int timeStampInt = (int) (System.currentTimeMillis() / 1000L);
         LOG.info("simplePFMessage called at:"+timeStampInt);
         PFMessage pfMessage = new PFMessage();
@@ -47,7 +46,7 @@ public class TASController {
     }
 
     @RequestMapping(method = RequestMethod.POST,value = "/pf")
-    public Object securePfMessage(@RequestBody PFMessage pfMessage) throws JsonProcessingException {
+    public MessageResponse securePfMessage(@RequestBody PFMessage pfMessage) throws JsonProcessingException,IOException {
         return tasService.personalityForge(pfMessage);
     }
 
