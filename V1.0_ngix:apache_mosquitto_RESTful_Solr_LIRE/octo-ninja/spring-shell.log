@@ -1,0 +1,6 @@
+// XD Shell 1.1.0.RELEASE log opened at 2014-12-02 14:13:38
+stream create --name faceppp --definition "http --port=8091 | file" --deploy
+stream create --name personCounter --definition "tap:stream:faceppp > counter" --deploy
+stream create --name personNamesCounter --definition "tap:stream:faceppp > field-value-counter --fieldName=person_name" --deploy
+stream create --name personTagsCounter --definition "tap:stream:faceppp > field-value-counter --fieldName=tag" --deploy
+// [failed] stream create --name personAggregateCounter --definition "tap:stream:faceppp > aggregatecounter"

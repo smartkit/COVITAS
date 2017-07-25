@@ -1,0 +1,18 @@
+<ion-view title="服务请求列表">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="serve in serves" type="item-text-wrap" href="#/tab/serve/{{serve.id}}">
+
+        <div class="item item-divider">
+          {{serve.gname}}
+        </div>
+
+        <a class="item item-icon-left item-icon-right" href="#/tab/serve/{{serve.id}}" ng-repeat="signal in serve.data">
+          <i class="icon ion-chatbubble-working"></i>
+          {{signal.name}}
+          <i class="icon ion-ios7-telephone-outline"></i>
+        </a>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
