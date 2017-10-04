@@ -1,4 +1,4 @@
-package info.smartkit;
+package info.smartkit.tas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
