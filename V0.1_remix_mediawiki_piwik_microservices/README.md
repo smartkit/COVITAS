@@ -1,8 +1,6 @@
-# iWorkflowChatbots_v0.1
-Intelligent Workflow for Chatbots.
+# iRemixMicroServices_v0.1
+Intelligent remix for dockerized microservices.
 
 # References
 
-https://github.com/yangboz/spring-boot-activiti-restful
-
-https://github.com/yangboz/ChatBotsMessager
+https://github.com/yangboz/TensorCloud
