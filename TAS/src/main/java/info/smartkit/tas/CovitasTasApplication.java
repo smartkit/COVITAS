@@ -12,5 +12,6 @@ public class CovitasTasApplication {
 	public static void main(String[] args) {
 		System.setProperty("https.protocols", "TLSv1.1");
 		SpringApplication.run(CovitasTasApplication.class, args);
+
 	}
 }
