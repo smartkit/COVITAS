@@ -1,0 +1,39 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view title="{{serve.name}}>>{{serve.data[0].name}}">
+    <ion-content has-header="true" padding="true">
+        <div class="list">
+
+            <a class="item item-thumbnail-left" href="#">
+                <img src="../www/img/stantz.jpg">
+
+                <h2>客户ID</h2>
+
+                <p>客户信息描述</p>
+            </a>
+
+        </div>
+        <div class="list list-inset">
+
+            <a class="item item-icon-left item-icon-right" href="#">
+                <i class="icon ion-bag"></i>
+                服务区商品1资料
+                <span class="item-note">
+            资料描述...
+          </span>
+            </a>
+
+            <a class="item item-icon-left item-icon-right" href="#">
+                <i class="icon ion-bag"></i>
+                服务区商品2资料
+        <span class="item-note">
+            资料描述...
+          </span>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

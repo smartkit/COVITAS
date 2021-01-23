@@ -1,0 +1,16 @@
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/configs/StaticResourceConfiguration.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/pojo/User.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/pojo/PFMessageResponse.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/repository/EmployeeRepository.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/controller/TASController.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/controller/EmployeeController.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/CovitasTasApplication.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/configs/SimpleCORSFilter.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/service/impl/TASService.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/pojo/PFMessage.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/pojo/Employee.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/service/ITASServices.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/pojo/Message.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/pojo/MessageResponse.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/configs/DisableSSLConfiguration.java
+/Users/yangboz/git/COVITAS/TAS/src/main/java/info/smartkit/tas/configs/SwaggerConfig.java
